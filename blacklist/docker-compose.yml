@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: blacklist_api
+    image: blacklist_api:1.0.0
+    build: .
+    ports:
+      - "3004:3004"
+    environment:
+      - DB_URL=postgresql://postgres:postgres@flask_db:5432/postgres
+    networks:
+      - my_app_network
+
+
+
+networks:
+  my_app_network:
+    external: true 
+
+volumes:
+  pgdata:
